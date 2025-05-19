@@ -26,27 +26,32 @@ namespace appslovo
         async Task<string> SendRequestUserInsert(string phone, string username, string invite_code)
         {
             string res = "";
-
-            HttpClient client = new HttpClient();
-
-            string Url = "https://apislovo.zevent.ru/Slovo/Registration?phone_number="+ phone + "&username="+ username + "&invitecode=" + invite_code;
-
-            Uri uri = new Uri(string.Format(Url));
-
-            HttpResponseMessage response = await client.GetAsync(uri);
-
-            if (response.IsSuccessStatusCode)
+            try
             {
-                string inserted_user = await response.Content.ReadAsStringAsync();
+                HttpClient client = new HttpClient();
 
-                res = inserted_user;
+                string Url = homepage.web_connection + "Registration?phone_number=" + phone + "&username=" + username + "&invitecode=" + invite_code;
 
+                Uri uri = new Uri(string.Format(Url));
+
+                HttpResponseMessage response = await client.GetAsync(uri);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string inserted_user = await response.Content.ReadAsStringAsync();
+
+                    res = inserted_user;
+
+                }
+                else
+                {
+                    res = "Something went wrong while inserting a user";
+                }
             }
-            else
+            catch
             {
-                res = "error(something went wrong when we tried to insert a user)";
+                input_errors.Text = "No internet.";
             }
-
             return res;
         }
 
@@ -56,33 +61,52 @@ namespace appslovo
         }
         async void send_user_insertion(object sender, EventArgs e)
         {
+            string inserted_user = "";
             var phone_number = phone_number_label.Text;
             var username = enrty_username.Text;
-            var invite_code = ((Entry)sender).Text;
-            var inserted_user = await SendRequestUserInsert(phone_number, username, invite_code);
-            if (inserted_user == "success")
+            var invite_code = (enrty_invitecode).Text;
+            if (invite_code is null || username is null)
             {
-                await Navigation.PushAsync(new confirm(phone_number), false);
-            }
-            if (inserted_user == "bad_username")
-            {
-                input_errors.Text = "the username can only consist of Latin letters, numbers and '_'";
-            }
-            if (inserted_user == "-1")
-            {
-                input_errors.Text = "this username is alredy taken, chose another one";
-            }
-            if (inserted_user == "-2")
-            {
-                input_errors.Text = "This invite code does not exist yet";
-            }
-            if (inserted_user == "send_error")
-            {
-                input_errors.Text = "Sending error";
+                input_errors.Text = "Fill all the fields.";
             }
             else
             {
-                input_errors.Text = inserted_user;
+                if (username.Length > 2 && invite_code.Length == 10)
+                {
+                    inserted_user = await SendRequestUserInsert(phone_number, username, invite_code);
+                }
+                else
+                {
+                    if (invite_code.Length != 10)
+                    {
+                        input_errors.Text = "Enter the correct invite code.";
+                    }
+                    if (username.Length < 3)
+                    {
+                        input_errors.Text = "Username is too short.";
+                    }
+                }
+
+                if (inserted_user == "success")
+                {
+                    await Navigation.PushAsync(new confirm(phone_number), false);
+                }
+                if (inserted_user == "bad_username")
+                {
+                    input_errors.Text = "The username must contain only latin letters, digits and '_'";
+                }
+                if (inserted_user == "-1")
+                {
+                    input_errors.Text = "This username has alredy taken.";
+                }
+                if (inserted_user == "-2")
+                {
+                    input_errors.Text = "This invite code does not exist yet.";
+                }
+                if (inserted_user == "send_error")
+                {
+                    input_errors.Text = "Something went wrong while sending data.";
+                }
             }
 
         }

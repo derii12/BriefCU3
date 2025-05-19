@@ -1,100 +1,140 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+             CurrentPageChanged="CloseInputs"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="appslovo.homepage" WidthRequest="10000"
-             xmlns:effects="clr-namespace:PlainEntryAndroidSample.Effects">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style x:Key="appslovo.homepage" TargetType="AbsoluteLayout">
-                <Setter Property="Background"  Value="#0B0B0B"/>
-            </Style>
-            <Style x:Key="entrystyle" TargetType="Entry">
-                <Setter Property="TextColor" Value="#D8D8D8" />
-                <Setter Property="PlaceholderColor" Value="#A9A9A9" />
-                <Setter Property="BackgroundColor" Value="Transparent"/>
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-       
-    <ContentPage.Content>
-        <StackLayout BackgroundColor="#111417">
-            <StackLayout Margin="0,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                <Frame WidthRequest="70" Background="Transparent" Padding="0,0,0,0">
-                    
-                    <Frame Padding="0,0,0,0" Background="Transparent" x:Name="button_open_menu" IsVisible="True">
-                        <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="openmenu"/>
-                    </Frame.GestureRecognizers>
-                    <Frame BackgroundColor="Transparent" Padding="25">
-                        <Image x:Name="imagemenu"/>
-                    </Frame>
-                </Frame>
-                </Frame>
-                <Label Text="Quody" Margin="0,20" TextColor="#D8D8D8" FontSize="Large" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
-                <Frame WidthRequest="70" Padding="0,0,0,0" Background="Transparent" HorizontalOptions="End">
-                    <Frame Padding="0,0,0,0" Background="Transparent"  x:Name="button_close_menu" IsVisible="False">
+             x:Class="appslovo.homepage"
+             xmlns:effects="clr-namespace:PlainEntryAndroidSample.Effects"
+             x:Name="MainCarouselPage"
+             
+
+             Background="#161718"
+              >
+
+    <ContentPage   BackgroundColor="Transparent"  >
+        <ContentPage.Resources>
+            <ResourceDictionary>
+
+                <Style x:Key="entrystyle" TargetType="Entry">
+                    <Setter Property="TextColor" Value="#D8D8D8" />
+                    <Setter Property="PlaceholderColor" Value="#A9A9A9" />
+                    <Setter Property="BackgroundColor" Value="Transparent"/>
+                </Style>
+            </ResourceDictionary>
+        </ContentPage.Resources>
+
+        <ContentPage.Content           >
+
+
+
+            <StackLayout VerticalOptions="FillAndExpand"  Orientation="Vertical"  Margin="0,0,0,0">
+
+
+                <Frame Padding="0" BackgroundColor="Transparent" HeightRequest="47">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Start" HeightRequest="40" Margin="0,12,0,0" BackgroundColor="Transparent">
+                        <Frame HorizontalOptions="Start" Padding="25,0,5,25"  HeightRequest="10" BackgroundColor="Transparent" VerticalOptions="StartAndExpand">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="show_settings"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout VerticalOptions="Start" Margin="-5,0,10,0" HorizontalOptions="Start" WidthRequest="24">
+                                <Ellipse Fill="#596AC7"
+                                Margin="0,0,0,0"
+WidthRequest="7"
+HeightRequest="7"
+HorizontalOptions="Start" />
+                                <Ellipse Fill="#596AC7"
+                                Margin="0,-5,0,0"
+WidthRequest="7"
+HeightRequest="7"
+HorizontalOptions="Start" />
+                                <Ellipse Fill="#596AC7"
+                                Margin="0,-5,0,0"
+WidthRequest="7"
+HeightRequest="7"
+HorizontalOptions="Start" />
+                            </StackLayout>
+                        </Frame>
+                        <Label Padding="10,0,0,10" VerticalOptions="CenterAndExpand" FontSize="15" x:Name="error_alert" TextColor="{DynamicResource Key=red}" Text=""/>
+                        <Frame HorizontalOptions="EndAndExpand" Padding="25,0,15,10"  HeightRequest="10" BackgroundColor="Transparent">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="closemenu"/>
                             </Frame.GestureRecognizers>
-                            <Frame BackgroundColor="Transparent" Padding="25">
-                                <Image x:Name="closemenuimage"/>
-                            </Frame>
-                    </Frame>
+                            <StackLayout VerticalOptions="Center" Margin="-5,0,17,0" HorizontalOptions="End" WidthRequest="16">
+                                <BoxView Color="{DynamicResource Key=blue}" HeightRequest="3" Rotation="45" Margin="0,-2,0,0"  CornerRadius="1"/>
+                                <BoxView Color="{DynamicResource Key=blue}" HeightRequest="3" Rotation="-45" Margin="0,1,0,0" CornerRadius="1"/>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
                 </Frame>
-            </StackLayout>
-            <StackLayout  x:Name="mainpage_layout" Orientation="Horizontal" Margin="0,0,0,0">
-                <StackLayout  HorizontalOptions="CenterAndExpand" BackgroundColor="#111417" x:Name="menu" IsVisible="False" WidthRequest="3239">
-                    <ScrollView Padding="15,10,15,10">
+                <BoxView HeightRequest="1.6" BackgroundColor="{DynamicResource Key=darkframecolor}" Margin="0,-3,0,-6"/>
 
-                        <StackLayout HeightRequest="1000" >
-                            <Label Text="" x:Name="error_alert" Margin="5,-5,0,-25" FontSize="15" FontFamily="Inter" TextColor="#ED4A34"/>
-                            <StackLayout Orientation="Horizontal">
-                                <Label x:Name="username_label" Text="Username" HorizontalOptions="StartAndExpand" TextColor="#D8D8D8" FontSize="30" FontFamily="Inter" Margin="5,10,0,10"/>
+
+
+
+
+                <StackLayout HorizontalOptions="CenterAndExpand" WidthRequest="3239" BackgroundColor="Transparent">
+
+                    <ScrollView Padding="15,10,15,10" VerticalOptions="FillAndExpand">
+
+                        <StackLayout >
+
+                            <Frame BackgroundColor="Transparent" Padding="0,0,0,0" VerticalOptions="Start" Margin="0,10,0,0">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CopyInvite" />
+                                </Frame.GestureRecognizers>
+                                <StackLayout Orientation="Horizontal" Padding="0">
+                                    <StackLayout Margin="0,0,0,0">
+                                        <Label Text="Tap to copy your invite code:" FontFamily="Inter" FontSize="14" TextColor="#A9A9A9" HorizontalOptions="StartAndExpand" Margin="5,0,0,-15"/>
+                                        <Label Text="" FontFamily="Inter" FontSize="34" CharacterSpacing="1" TextColor="#A9A9A9" HorizontalOptions="StartAndExpand" x:Name="invite_label" Margin="5,0,0,0"/>
+                                    </StackLayout>
+                                    <Frame Padding="0" VerticalOptions="CenterAndExpand" WidthRequest="30" BackgroundColor="Transparent" Margin="0,0,20,0" HorizontalOptions="EndAndExpand">
+                                        <StackLayout Orientation="Horizontal" Padding="0">
+                                            <Rectangle Fill="{DynamicResource Key=darkbgcolor}" Stroke="#A9A9A9" WidthRequest="25" HeightRequest="27" RadiusX="5" RadiusY="5" VerticalOptions="StartAndExpand" StrokeThickness="2.5" Margin="0,0,-2,10" />
+                                            <Rectangle Fill="#161718" Stroke="#A9A9A9" WidthRequest="25" HeightRequest="27"  RadiusX="5" RadiusY="5" VerticalOptions="EndAndExpand" StrokeThickness="2.5" Margin="-19,10,0,0"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </Frame>
+
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Start">
+
                                 <Entry Margin="1.3,0,0,1"
-                            Background="#111417"
+                            Background="#161718"
                                HorizontalTextAlignment="Start"
                                FontFamily="Inter"
                                FontSize="30"
                                TextColor="#D8D8D8"
+                                           IsSpellCheckEnabled="false"
                                HorizontalOptions="FillAndExpand"
-                               IsVisible="false"
-                                       Completed="OpenUsernameEdit"
+                               IsVisible="true"
+                                      
                                x:Name="edit_username_entry"
                                        >
                                     <Entry.Effects>
                                         <effects:PlainEntry/>
                                     </Entry.Effects>
                                 </Entry>
-                                <Frame HorizontalOptions="End" Padding="2,20,2,20" Margin="7,0,15,0" BackgroundColor="#111417" HasShadow="False">
-                                    <Label Text="Edit" x:Name="action_username_button" TextColor="#3472ED" FontFamily="Inter" FontSize="15" Margin="0,0,0,0"/>
+
+                                <Frame HorizontalOptions="End" Padding="2,20,2,10" Margin="7,0,15,0" BackgroundColor="{DynamicResource Key=darkbgcolor}" HasShadow="False">
+                                    <Label Text="Edit" x:Name="action_username_button" TextColor="{DynamicResource Key=blue}" FontFamily="Viet" FontSize="15" Margin="0,0,0,0"/>
                                 </Frame>
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OpenUsernameEdit" />
                                 </StackLayout.GestureRecognizers>
                             </StackLayout>
-                            <Frame BackgroundColor="#222528" Padding="2,2,2,2" HeightRequest="60" CornerRadius="12" Margin="0,0,0,0" x:Name="AddFriendBlock">
+                            <BoxView BackgroundColor="Transparent" x:Name="edit_name_underline" HorizontalOptions="FillAndExpand" HeightRequest="2" Margin="2,-15,2,15"/>
+                            <Frame HasShadow="False" BackgroundColor="{DynamicResource Key=darkframecolor}" VerticalOptions="Start" Padding="2.5" HeightRequest="60" CornerRadius="14" Margin="0,0,0,0">
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OpenSearcher" />
+                                    <TapGestureRecognizer Tapped="OpenSearcherBlock" />
                                 </Frame.GestureRecognizers>
-                                <Frame BackgroundColor="#111417" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"   CornerRadius="10" Padding="20,8,20,8">
-                                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
-                                        <Label Text="Add friend"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="#A9A9A9" FontFamily="Inter" FontSize="20" CharacterSpacing="1" />
-                                        <Label Text="+" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" TextColor="#3472ED" FontFamily="Inter" FontSize="30" CharacterSpacing="1" Margin="0,-4,0,0"/>
-                                    </StackLayout>
-                                </Frame>
-                            </Frame>
-                            <Frame BackgroundColor="#222528" Padding="2,2,2,2" HeightRequest="60" CornerRadius="12" Margin="0,0,0,0" IsVisible="False" x:Name="AddFriendEntryBlock">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OpenSearcher" />
-                                </Frame.GestureRecognizers>
-                                <Frame BackgroundColor="#111417" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  CornerRadius="10" Padding="16,8,20,4">
+                                <Frame BackgroundColor="{DynamicResource Key=darkbgcolor}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="11.5" Padding="16,8,20,4">
                                     <StackLayout Orientation="Horizontal" VerticalOptions="Center"  Margin=".3,0,0,1.7">
                                         <Entry x:Name="AddFriendEntry"
                                             Style="{StaticResource entrystyle}"
                                                  CharacterSpacing="1"
-                                                    Placeholder="Add friend"
-                                               VerticalOptions="FillAndExpand"
-                                            Completed="OpenSearcher"
+                                               
+                                               
+                                                    Placeholder="Add a friend"
+                                               VerticalOptions="Start"
+                                        Text=""
                                             HorizontalOptions="FillAndExpand"
                                             MaxLength="50"
                                             Keyboard="Default"
@@ -106,76 +146,143 @@
                                                 <effects:PlainEntry/>
                                             </Entry.Effects>
                                         </Entry>
-                                        <Label Text="Close" HorizontalOptions="End" VerticalOptions="CenterAndExpand" TextColor="#3472ED" FontFamily="Inter" FontSize="15" CharacterSpacing="1" Margin="0,0,0,4"/>
+                                        <Frame IsVisible="false" Padding="0" BackgroundColor="Transparent" x:Name="AddFriendEntryBlock">
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="ClearSearch" />
+                                            </Frame.GestureRecognizers>
+                                            <Label Text="Close" VerticalOptions="CenterAndExpand" TextColor="{DynamicResource Key=blue}" FontFamily="Inter" FontSize="15"  CharacterSpacing="1" Margin="0,0,0,0"/>
+                                        </Frame>
+                                        <Label Text="+" x:Name="AddFriendBlock" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" TextColor="#a9a9a9" FontFamily="Inter" FontSize="30" CharacterSpacing="1" Margin="0,-4,0,0"/>
                                     </StackLayout>
                                 </Frame>
                             </Frame>
+                            <Label Text="No user with this username" TextColor="#a9a9a9" HorizontalTextAlignment="Center" FontSize="17" FontFamily="Inter" IsVisible="false" x:Name="friends_found"></Label>
                             <StackLayout Orientation="Vertical" x:Name="SearchResultStack"/>
                             <Label Text="Requests" HorizontalOptions="StartAndExpand" TextColor="#D8D8D8" IsVisible="false" FontSize="30" FontFamily="Inter" Margin="5,10,0,10" x:Name="RequestText"/>
                             <StackLayout Orientation="Vertical" x:Name="RequestsResultStack"/>
-                            <Label Text="Friends" HorizontalOptions="StartAndExpand" TextColor="#D8D8D8" IsVisible="false" FontSize="30" FontFamily="Inter" x:Name="FriendsText" Margin="5,10,0,10"/>
-                            <StackLayout Orientation="Vertical" x:Name="FriendsResultStack"/>
-                            <Frame BackgroundColor="Transparent" Padding="0,0,0,0" VerticalOptions="EndAndExpand">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="CopyInvite" />
-                                </Frame.GestureRecognizers>
-                                <StackLayout>
-                                    <Label Text="Tap to copy your invite code:" FontFamily="Inter" FontSize="14" TextColor="#343434" HorizontalOptions="StartAndExpand" Margin="5,-5,0,-15"/>
-                                    <Label Text="LW5BKAW9WP" FontFamily="Inter" FontSize="34" CharacterSpacing="1" TextColor="#343434" HorizontalOptions="StartAndExpand" x:Name="invite_label" Margin="5,0,0,0"/>
-                                </StackLayout>
-                            </Frame>
-                            <Button Text="logout(for debug)" Clicked="logout" VerticalOptions="End" />
-                        </StackLayout>
-                    </ScrollView>
-                </StackLayout>
-                <StackLayout  HorizontalOptions="CenterAndExpand" x:Name="posts" WidthRequest="1000" Margin="0,-20,0,0" IsVisible="True">
-                    <ScrollView Padding="15,10,15,10" VerticalOptions="FillAndExpand">
-                        <StackLayout>
-                            <Label Text="" x:Name="error_alert_post" Margin="5,0,0,0" FontSize="15" FontFamily="Inter" TextColor="#ED4A34"/>
-                            <Frame  BackgroundColor="#3472ED" Padding="2" CornerRadius="12"  x:Name="BlockEntry">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OpenEditor" />
-                                </Frame.GestureRecognizers>
-                                <Frame BackgroundColor="#222528"  CornerRadius="10" Padding="20,12,20,20">
-                                    <StackLayout Orientation="Vertical" >
-                                        <Label Text="" VerticalTextAlignment="End"  x:Name="counter_static" HorizontalOptions="StartAndExpand" TextColor="#A9A9A9" FontFamily="Hind" FontSize="12" />
-                                        <Label Text="" TextColor="#D8D8D8" FontFamily="Inter" FontSize="20" Margin="0,0,0,20" x:Name="exist_post"/>
-                                        <StackLayout HorizontalOptions="FillAndExpand" Padding="0,0,0,-5" VerticalOptions="EndAndExpand" Orientation="Horizontal">
-                                            <Label Text="0/250"  x:Name="symbcount"  HorizontalOptions="StartAndExpand" TextColor="#A9A9A9" FontFamily="Hind" FontSize="12"/>
-                                            <Label Text="Edit" VerticalTextAlignment="End"  HorizontalOptions="End" TextColor="#3472ED" FontFamily="Inter" FontSize="16" />
-                                        </StackLayout>
-                                    </StackLayout>
-                                </Frame>
-                            </Frame>
-
-                            <Frame BackgroundColor="#3472ED" Padding="2" CornerRadius="12"  x:Name="TextPost" IsVisible="False" >
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OpenEditor" />
-                                </Frame.GestureRecognizers>
-                                <Frame BackgroundColor="#222528" WidthRequest="300" Padding="20,25,20,20" CornerRadius="10" MinimumHeightRequest="100">
-                                    <StackLayout Orientation="Vertical" IsTabStop="False" >
-
-                                        <Editor FontFamily="Inter" FontSize="20" TextChanged="countsymbols" VerticalOptions="Start" TextColor="#D8D8D8" x:Name="TextPostEntry" FlowDirection="LeftToRight" Margin="-4,0,0,18.2" MaxLength="250" IsTextPredictionEnabled="False" IsSpellCheckEnabled="False" MinimumHeightRequest="90" IsTabStop="False" AutoSize="TextChanges">
-                                            <Editor.Effects>
-                                                <effects:PlainEntry/>
-                                            </Editor.Effects>
-                                        </Editor>
-                                        <StackLayout  VerticalOptions="EndAndExpand" Orientation="Horizontal" Padding="0,0,0,-5" Margin="0,-10,0,0">
-                                            <Label Text="0/250" x:Name="counter" HorizontalOptions="StartAndExpand" TextColor="#A9A9A9" FontFamily="Hind" FontSize="12"  />
-                                            <Label Text="Save"  VerticalTextAlignment="End"  HorizontalOptions="End" TextColor="#3472ED" FontFamily="Inter" FontSize="16" >
-                                            </Label>
-                                            <Label x:Name="ips" TextColor="white"/>
-                                        </StackLayout>
-                                    </StackLayout>
-                                </Frame>
-                            </Frame>
-                            <StackLayout x:Name="PostsResultStack">
-                                
+                            <Label Text="Waiting" HorizontalOptions="StartAndExpand" TextColor="#D8D8D8" IsVisible="false" FontSize="30" FontFamily="Inter" Margin="5,10,0,10" x:Name="WaitingText"/>
+                            <StackLayout Orientation="Vertical"  x:Name="WaitingResultStack"/>
+                            <StackLayout Orientation="Horizontal" Padding="0" Margin="0" IsVisible="false" x:Name="FriendsText">
+                                <Label Text="Friends" HorizontalOptions="StartAndExpand" TextColor="#D8D8D8" FontSize="30" FontFamily="Inter" Margin="5,10,0,10"/>
+                                <Label  HorizontalOptions="End" TextColor="#A9A9A9" HorizontalTextAlignment="End" FontFamily="Inter" FontSize="15" VerticalOptions="CenterAndExpand" Margin="0,10,20,0" x:Name="friends_count"/>
                             </StackLayout>
+                            <StackLayout Orientation="Vertical"  x:Name="FriendsResultStack"/>
                         </StackLayout>
                     </ScrollView>
+
                 </StackLayout>
             </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+    <ContentPage  
+                        >
+
+        <StackLayout  Padding="0"   HorizontalOptions="FillAndExpand">
+
+            <Frame Padding="0" BackgroundColor="Transparent" HeightRequest="47">
+                <StackLayout Orientation="Horizontal" VerticalOptions="Start" HeightRequest="40" Margin="0,12,0,0" x:Name="navigation_bar" BackgroundColor="Transparent">
+                    <Frame HorizontalOptions="Start" Padding="25,0,5,25"  HeightRequest="10" BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="openmenu"/>
+                        </Frame.GestureRecognizers>
+                        <StackLayout VerticalOptions="Center" Margin="-5,0,10,0" HorizontalOptions="Start" WidthRequest="24">
+                            <BoxView Color="{DynamicResource Key=blue}" HeightRequest="3" CornerRadius="1" Margin="0,1,0,0"/>
+                            <BoxView Color="{DynamicResource Key=blue}" HeightRequest="3" CornerRadius="1" Margin="0,-1,0,0"/>
+                            <BoxView Color="{DynamicResource Key=blue}" HeightRequest="3" CornerRadius="1" Margin="0,-1,0,0"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame BackgroundColor="Transparent" Padding="-5,20,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                        <StackLayout>
+                            <Label  Text="" x:Name="error_alert_post" Margin="0,-20,0,0" FontSize="14"  FontFamily="Inter" TextColor="#D8D8D8"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Frame>
+            <BoxView HeightRequest="1.6" BackgroundColor="{DynamicResource Key=darkframecolor}" Margin="0,-3,0,-6"/>
+            <StackLayout x:Name="main_blck" WidthRequest="3239" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand"  Margin="0,0,0,-100" IsVisible="True">
+
+
+                <ScrollView Padding="15,0,15,10" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand">
+                    <StackLayout HorizontalOptions="Fill">
+                        <Frame HasShadow="false"  Padding="2.5" CornerRadius="18"  Margin="0,10,0,0" x:Name="BlockEntry" >
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OpenEditor"/>
+                            </Frame.GestureRecognizers>
+                            <Frame.Background>
+                                <!-- StartPoint defaults to (0,0) -->
+                                <LinearGradientBrush EndPoint="1,1">
+                                    <GradientStop Color="#343739"
+                          Offset="0.1" />
+                                    <GradientStop Color="#3A3E41"
+                          Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Frame.Background>
+                            <Frame HasShadow="false" BackgroundColor="{DynamicResource Key=darkbgcolor}" VerticalOptions="Center" WidthRequest="1000" HorizontalOptions="Center" Margin="0" CornerRadius="15.5" Padding="20,12,20,12">
+                                <StackLayout Orientation="Vertical" >
+                                    <StackLayout HorizontalOptions="FillAndExpand" Padding="0,0,0,0" VerticalOptions="EndAndExpand" Orientation="Horizontal">
+                                        <Label Text="" VerticalTextAlignment="Start" VerticalOptions="Start"   x:Name="counter_static" HorizontalOptions="StartAndExpand" TextColor="#A9A9A9" FontFamily="Hind" FontSize="12" />
+                                        <Label Text="" HorizontalOptions="EndAndExpand" x:Name="encrypt_static" HorizontalTextAlignment="End" VerticalTextAlignment="Start" TextColor="#A9A9A9" FontFamily="Hind" FontSize="12"></Label>
+                                    </StackLayout>
+                                    <Editor Focused="OpenEditor" Background="#161718" Unfocused="Edit_escaped"  FontFamily="Inter" FontSize ="20" TextChanged="countsymbols" VerticalOptions="StartAndExpand" TextColor="#D8D8D8" x:Name="TextPostEntry" FlowDirection="LeftToRight" Margin="-4.3,0,0,18.2" MaxLength="300" IsTextPredictionEnabled="False" IsSpellCheckEnabled="False" PlaceholderColor="#A9A9A9" MinimumHeightRequest="90" IsTabStop="False" Text="" AutoSize="TextChanges">
+                                        <Editor.Effects>
+                                            <effects:PlainEntry/>
+                                        </Editor.Effects>
+                                    </Editor>
+                                    <StackLayout HorizontalOptions="FillAndExpand" Padding="0,0,0,0" VerticalOptions="EndAndExpand" Orientation="Horizontal">
+                                        <Label Text="0/300"  x:Name="symbcount"  HorizontalOptions="StartAndExpand" TextColor="#A9A9A9" FontFamily="Hind" FontSize="12" Padding="0,3,0,0"/>
+                                        <Label Text="Edit" VerticalTextAlignment="End"  HorizontalOptions="End" TextColor="{DynamicResource Key=blue}" FontFamily="Inter" FontSize="16" x:Name="post_action_button"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </Frame>
+                        <Frame BackgroundColor="#252728" CornerRadius="15" HasShadow="False" HeightRequest="30"  Padding="0,0,10,0" HorizontalOptions="StartAndExpand" Margin="0,0,0,0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="openlist"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Reactions" HorizontalTextAlignment="Start" Padding="20,0,0,0" VerticalOptions="CenterAndExpand" TextColor="#A9A9A9" FontFamily="Inter"/>
+                                <Label Text="" x:Name="my_react_count" HorizontalTextAlignment="Start" Padding="5,0,10,0" FontAttributes="Bold" VerticalOptions="CenterAndExpand" TextColor="#A9A9A9" FontFamily="Inter"/>
+                            </StackLayout>
+
+                        </Frame>
+                        <StackLayout Margin="0,0,0,100" VerticalOptions="FillAndExpand" x:Name="PostsResultStack">
+
+                        </StackLayout>
+
+                    </StackLayout>
+
+                </ScrollView>
+
+
+
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Frame Padding="14" CornerRadius="30" HorizontalOptions="Start" Margin="18,-8,0,0">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="show_streak"/>
+                    </Frame.GestureRecognizers>
+                    <Frame.Background>
+                        <!-- StartPoint defaults to (0,0) -->
+                        <LinearGradientBrush EndPoint="1,1">
+                            <GradientStop Color="#992C3460"
+                                      
+                          Offset="0.1" />
+                            <GradientStop Color="#17181F"
+                          Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Frame.Background>
+                    <StackLayout Orientation="Horizontal" Padding="0">
+                        <Frame BackgroundColor="Transparent" Padding="0" HeightRequest="21" WidthRequest="21">
+
+                            <Image x:Name="fire" Aspect="AspectFit"/>
+                        </Frame>
+                        <Label Text="0" VerticalOptions="Center" Margin="0,-2,0,0" FontFamily="Inter" HorizontalOptions="Start" TextColor="{DynamicResource Key=blue}" FontSize="22" x:Name="user_streak"/>
+                    </StackLayout>
+                </Frame>
+
+            </StackLayout>
         </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+
+    </ContentPage>
+</CarouselPage>

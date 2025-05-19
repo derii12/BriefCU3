@@ -7,13 +7,13 @@
         <ResourceDictionary>
             <Style x:Key="entrystyle" TargetType="Entry">
 
-                <Setter Property="TextColor" Value="#3472ED" />
+                <Setter Property="TextColor" Value="{DynamicResource Key=blue}" />
                 <Setter Property="HeightRequest" Value="30" />
-                <Setter Property="PlaceholderColor" Value="#77787A" />
+                <Setter Property="PlaceholderColor" Value="#a9a9a9" />
                 <Setter Property="BackgroundColor" Value="Transparent"/>
             </Style>
             <Style x:Key="appslovo.register" TargetType="AbsoluteLayout">
-                <Setter Property="Background"  Value="#111417"/>
+                <Setter Property="Background"  Value="{DynamicResource Key=darkbgcolor}"/>
             </Style>
 
         </ResourceDictionary>
@@ -21,69 +21,78 @@
     <ContentPage.Content>
         <AbsoluteLayout>
             <Label x:Name="input_errors"
-                WidthRequest="1600"
-               TextColor="red"
+               TextColor="{DynamicResource Key=red}"
                Text="" 
-               AbsoluteLayout.LayoutFlags="All"
-               AbsoluteLayout.LayoutBounds=".5,.64,.8,.1"
-               HorizontalTextAlignment="Center"/>
+               HorizontalTextAlignment="Center"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds=".5,.4,251,126"/>
             <Label
-                Text="Quody"
-                TextColor="White"
-                FontSize="40"
-                AbsoluteLayout.LayoutFlags="All"
-                AbsoluteLayout.LayoutBounds=".5,.06,.26,.06"
-                FontFamily="Inter"/>
+                Text="Brief"
+TextColor="White"
+FontSize="40"
+AbsoluteLayout.LayoutFlags="PositionProportional"
+AbsoluteLayout.LayoutBounds=".5,.03,85,100"
+FontFamily="Inter"/>
 
 
+            <Frame HorizontalOptions="EndAndExpand" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".94,.45,50,50" Padding="0" BackgroundColor="Transparent">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="send_user_insertion"/>
+                </Frame.GestureRecognizers>
 
-            <Frame AbsoluteLayout.LayoutFlags="PositionProportional"
-                   AbsoluteLayout.LayoutBounds=".5,.46,230,50"
-                   Padding="10,0,0,0"
-
-                   HasShadow="true"
-                   BackgroundColor="#222528"
-                   CornerRadius="5">
-
-                <Entry
-Style="{StaticResource entrystyle}"
-                    CharacterSpacing="1"
-                    FontFamily="Inter"
-                    FontSize="20"
-            Placeholder="Username"
-            Margin="0,0,0,0"
-            WidthRequest="170"
-            x:Name="enrty_username"
-            Keyboard="Default"
-            Completed="go_to_entry_invite">
-                    <Entry.Effects>
-                        <effects:PlainEntry/>
-                    </Entry.Effects>
-                </Entry>
+                <Frame Padding="17" IsClippedToBounds="True" Margin="0,5,0,0" BackgroundColor="Transparent">
+                    <StackLayout>
+                        <BoxView Color="{DynamicResource Key=blue}" HeightRequest="3" Rotation="45" Margin="0,-2,0,0"  CornerRadius="1"/>
+                        <BoxView Color="{DynamicResource Key=blue}" HeightRequest="3" Rotation="-45" Margin="0,1,0,0" CornerRadius="1"/>
+                    </StackLayout>
+                </Frame>
             </Frame>
-            <Frame AbsoluteLayout.LayoutFlags="PositionProportional"
-                   AbsoluteLayout.LayoutBounds=".5,.54,230,50"
-                   Padding="10,0,0,0"
-                    
-                   HasShadow="true"
-                   BackgroundColor="#222528"
-                   CornerRadius="5">
 
-                <Entry
-Style="{StaticResource entrystyle}"
-                    CharacterSpacing="1"
-            Placeholder="Invite code"
-            FontFamily="Inter"
-                    FontSize="20"        
-            Margin="0,0,0,0"
-            WidthRequest="170"
-           x:Name="enrty_invitecode"
-                    Completed="send_user_insertion"
-            Keyboard="Default">
-                    <Entry.Effects>
-                        <effects:PlainEntry/>
-                    </Entry.Effects>
-                </Entry>
+            <Frame 
+                   HasShadow="False"
+                   Padding="0,5,0,10"
+                   BackgroundColor="{DynamicResource Key=darkframecolor}"
+                   CornerRadius="15"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds=".5,.45,251,126">
+
+                <StackLayout>
+                        <Entry
+    Style="{StaticResource entrystyle}"
+                        CharacterSpacing="1"
+                        FontFamily="Inter"
+                        FontSize="20"
+                Placeholder="Username"
+                Margin="10,0,0,0"
+                WidthRequest="170"
+                x:Name="enrty_username"
+                Keyboard="Default"
+                Completed="go_to_entry_invite"
+                            HeightRequest="50">
+                        <Entry.Effects>
+                            <effects:PlainEntry/>
+                        </Entry.Effects>
+                    </Entry>
+
+                    <BoxView HeightRequest="4" BackgroundColor="{DynamicResource Key=darkbgcolor}"/>
+
+                    <Entry
+    Style="{StaticResource entrystyle}"
+                        CharacterSpacing="1"
+                Placeholder="Invite code"
+                FontFamily="Inter"
+                        FontSize="20"        
+                Margin="10,0,0,0"
+                WidthRequest="170"
+               x:Name="enrty_invitecode"
+                        Completed="send_user_insertion"
+                Keyboard="Default"
+                        HeightRequest="45">
+                        <Entry.Effects>
+                            <effects:PlainEntry/>
+                        </Entry.Effects>
+                    </Entry>
+                </StackLayout>
             </Frame>
 
             <Label x:Name="phone_number_label" Text="" IsVisible="False"/>

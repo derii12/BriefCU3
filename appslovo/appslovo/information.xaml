@@ -1,0 +1,31 @@
+﻿<pages:PopupPage xmlns:pages="http://rotorgames.com"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="appslovoM.information">
+
+    <Frame BackgroundColor="{DynamicResource Key=darkframecolor}" CornerRadius="37" Padding="2" Margin="30,0,30,0" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+        <Frame BackgroundColor="{DynamicResource Key=darkbgcolor}" CornerRadius="35" Padding="20,25,20,25" Margin="0,0,.5,.5">
+            <StackLayout Padding="10,0,10,20" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Frame HorizontalOptions="StartAndExpand" Margin="-15,10,10,-1.6" WidthRequest="50" HeightRequest="50" Padding="0" BackgroundColor="Transparent">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="delcancel"/>
+                    </Frame.GestureRecognizers>
+
+                    <Frame Padding="17" IsClippedToBounds="True" Margin="0,0,0,0" BackgroundColor="Transparent">
+                        <StackLayout>
+                            <BoxView Color="{DynamicResource Key=blue}" HeightRequest="3" Rotation="-45" Margin="0,-2,0,0"  CornerRadius="1"/>
+                            <BoxView Color="{DynamicResource Key=blue}" HeightRequest="3" Rotation="45" Margin="0,1,0,0" CornerRadius="1"/>
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+                <Label FontSize="24" TextColor="#D8D8D8" FontFamily="Inter" x:Name="Main_label" Text=""/>
+                <ScrollView x:Name="scroll_content">
+                    <StackLayout>
+                        <Label FontSize="14" TextColor="#D8D8D8" FontFamily="Inter" x:Name="content_text" Text=""/>
+                    <Label FontSize="24" FontAttributes="Bold" TextColor="#D8D8D8" FontFamily="Inter" x:Name="content_text_big"  Text=""/>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </Frame>
+    </Frame>
+</pages:PopupPage>

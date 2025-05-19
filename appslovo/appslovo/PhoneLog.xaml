@@ -9,64 +9,80 @@
         <ResourceDictionary>
             <Style x:Key="entrystyle" TargetType="Entry">
 
-                <Setter Property="TextColor" Value="#3472ED" />
+                <Setter Property="TextColor" Value="{DynamicResource Key=blue}" />
                 <Setter Property="HeightRequest" Value="30" />
-                <Setter Property="PlaceholderColor" Value="#77787A" />
+                <Setter Property="PlaceholderColor" Value="#a9a9a9" />
                 <Setter Property="BackgroundColor" Value="Transparent"/>
             </Style>
             <Style x:Key="appslovo.PhoneLog" TargetType="AbsoluteLayout">
-                <Setter Property="Background"  Value="#111417"/>
+                <Setter Property="Background"  Value="{DynamicResource Key=darkbgcolor}"/>
             </Style>
 
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label x:Name="phone_input_error"
-                WidthRequest="1600"
-               TextColor="red"
-               Text="" 
-               AbsoluteLayout.LayoutFlags="All"
-               AbsoluteLayout.LayoutBounds=".5,.61,.4,.06"
-               HorizontalTextAlignment="Center"/>
+        <AbsoluteLayout>
+            
             <Label
-                Text="Quody"
+                Text="Brief"
                 TextColor="White"
                 FontSize="40"
-                VerticalOptions="Center"
-                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds=".5,.03,110,100"
                 FontFamily="Inter"/>
 
+            <Label x:Name="phone_input_error"
+    WidthRequest="1600"
+   TextColor="{DynamicResource Key=red}"
+   Text="" 
+   AbsoluteLayout.LayoutFlags="XProportional"
+   AbsoluteLayout.LayoutBounds=".5,280,200,100"
+                   HorizontalTextAlignment="Center"/>
+
+
+            <Frame HorizontalOptions="EndAndExpand" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".94,.45,50,50" Padding="0" BackgroundColor="Transparent">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="getid"/>
+                </Frame.GestureRecognizers>
+
+                <Frame Padding="17" IsClippedToBounds="True" Margin="0,5,0,0" BackgroundColor="Transparent">
+                    <StackLayout>
+                        <BoxView Color="{DynamicResource Key=blue}" HeightRequest="3" Rotation="45" Margin="0,-2,0,0"  CornerRadius="1"/>
+                        <BoxView Color="{DynamicResource Key=blue}" HeightRequest="3" Rotation="-45" Margin="0,1,0,0" CornerRadius="1"/>
+                    </StackLayout>
+                </Frame>
+            </Frame>
 
 
             <Frame  HasShadow="False"
-                   Padding="0,5,0,10"
-                   BackgroundColor="#222528"
-                   CornerRadius="9"
-                HorizontalOptions="CenterAndExpand"
-                WidthRequest="251"
-                VerticalOptions="CenterAndExpand" Margin="0,-82,0,0">
-                <StackLayout>
+                   Padding="20,7,0,10"
+                   BackgroundColor="{DynamicResource Key=darkframecolor}"
+                   CornerRadius="15"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds=".5,.45,251,66">
+                
                     <Entry HeightRequest="50"
 Style="{StaticResource entrystyle}"
-                    CharacterSpacing="1"
+                    CharacterSpacing="1.5"
             Placeholder="Phone number"
             MaxLength="12"
             x:Name="enrt"
             Keyboard="Telephone"
+                          
             Completed="getid"
                         VerticalOptions="CenterAndExpand"
-                    HorizontalTextAlignment="Center"
+                    HorizontalTextAlignment="Start"
                     FontFamily="Inter"
                     FontSize="20">
                     <Entry.Effects>
                         <effects:PlainEntry/>
                     </Entry.Effects>
                 </Entry>
-                    <BoxView VerticalOptions="EndAndExpand" WidthRequest="500" HeightRequest="10" BackgroundColor="#111417" Margin="0,0,0,0"></BoxView>
-                    </StackLayout>
+
+                   
             </Frame>
 
-        </StackLayout>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

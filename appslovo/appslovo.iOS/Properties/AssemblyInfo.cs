@@ -1,6 +1,10 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using appslovo.iOS.Renderers;
+using UIKit;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -34,3 +38,20 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: ExportRenderer(typeof(CarouselPage), typeof(CustomCarouselPageRenderer))]
+namespace appslovo.iOS.Renderers
+{
+    public class CustomCarouselPageRenderer : CarouselPageRenderer
+    {
+        // Override the OnElementChanged method so we can tweak this renderer post-initial setup
+        protected override void OnElementChanged(VisualElementChangedEventArgs e)
+        {
+            base.OnElementChanged(e);
+
+            UIView view = NativeView;
+            var scrollView = (UIScrollView)view.Subviews[0];
+            scrollView.ContentSize = new CoreGraphics.CGSize(scrollView.ContentSize.Width, scrollView.Frame.Size.Height);
+            AutomaticallyAdjustsScrollViewInsets = false;
+        }
+    }
+}

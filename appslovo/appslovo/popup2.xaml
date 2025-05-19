@@ -1,0 +1,38 @@
+﻿<pages:PopupPage xmlns:pages="http://rotorgames.com"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="appslovoM.popup2">
+
+    <Frame BackgroundColor="{DynamicResource Key=darkframecolor}" CornerRadius="37" Padding="2" HorizontalOptions="Center" VerticalOptions="Center">
+        <Frame  CornerRadius="35" Padding="30,25,30,25" Margin="0,0,.5,.5">
+            <Frame.Background>
+                <!-- StartPoint defaults to (0,0) -->
+                <LinearGradientBrush EndPoint="1,1">
+                    <GradientStop Color="#161718"
+Offset="0.1" />
+                    <GradientStop Color="#1A1B1D"
+Offset="1.0" />
+                </LinearGradientBrush>
+            </Frame.Background>
+            <StackLayout >
+                <Label x:Name="delete"  Text="" TextColor="#D8D8D8" FontFamily="Inter" FontSize="22" HorizontalTextAlignment="Center"/>
+                <Frame BackgroundColor="Transparent" HorizontalOptions="Center" Padding="0">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
+                        <Frame BackgroundColor="{DynamicResource Key=darkframecolor}" Margin="0,10,5,0" WidthRequest="60" HorizontalOptions="Start" HasShadow="False" CornerRadius="15" HeightRequest="35" Padding="15,10,15,10" VerticalOptions="EndAndExpand">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="deletefriend" />
+                            </Frame.GestureRecognizers>
+                            <Label Text="Delete" FontSize="16" FontFamily="Inter" TextColor="{DynamicResource Key=red}" VerticalOptions="CenterAndExpand" Margin="3,-6,0,-5" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                        </Frame>
+                        <Frame BackgroundColor="{DynamicResource Key=darkframecolor}" Margin="5,10,0,0" WidthRequest="60" HorizontalOptions="End" HasShadow="False" CornerRadius="15" HeightRequest="35" Padding="15,10,15,10" VerticalOptions="EndAndExpand">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="delcancel" />
+                            </Frame.GestureRecognizers>
+                            <Label Text="Cancel" FontSize="16" FontFamily="Inter" TextColor="{DynamicResource Key=blue}" VerticalOptions="CenterAndExpand" Margin="3,-6,0,-5" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </Frame>
+    </Frame>
+</pages:PopupPage>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns:pages="http://rotorgames.com"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="appslovoM.streakpopuppage">
+    <ContentPage.Content>
+        <Frame BackgroundColor="{DynamicResource Key=darkframecolor}" CornerRadius="37" Padding="2" Margin="30,0,30,0" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+            <Frame CornerRadius="35" Padding="20,25,20,25" Margin="0,0,.5,.5">
+                <StackLayout Padding="10,0,10,10" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Image x:Name="fire" Aspect="AspectFit" HeightRequest="70" WidthRequest="70"/>
+                    <Label Text="" FontSize="24" TextColor="#D8D8D8" FontFamily="Inter" x:Name="streaklabel" HorizontalTextAlignment="Center"/>
+                    <Label FontSize="14" TextColor="#A9A9A9" FontFamily="Inter" x:Name="secondlabel" Text="" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+                <Frame.Background>
+                    <!-- StartPoint defaults to (0,0) -->
+                    <LinearGradientBrush EndPoint="1,1">
+                        <GradientStop Color="#161718"
+Offset="0.1" />
+                        <GradientStop Color="#1A1B1D"
+Offset="1.0" />
+                    </LinearGradientBrush>
+                </Frame.Background>
+            </Frame>
+        </Frame>
+    </ContentPage.Content>
+</pages:PopupPage>

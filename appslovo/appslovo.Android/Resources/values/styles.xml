@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
-	<style name="MyTheme.Base" parent="Theme.AppCompat.Light">
+	<style name="MainTheme" parent="MainTheme.Base">
 	</style>
-	<style name="MyTheme" parent="MyTheme.Base">
-	</style>
-	<style name="MyTheme.Splash" parent ="Theme.AppCompat.Light.NoActionBar">
-
+	<style name="MainTheme.Base" parent="Theme.AppCompat.Light">
+		<item name="colorAccent">#596AC7</item>
+		<item name="android:statusBarColor ">#161718</item>
+		<item name="android:navigationBarColor ">#161718</item>
+		<item name="android:windowBackground">#161718</item>
+		<item name="colorPrimaryDark">#00000000</item>
+		<item name="colorPrimary">#00000000</item>
 	</style>
 </resources>

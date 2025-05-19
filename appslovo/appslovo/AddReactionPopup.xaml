@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns:pages="http://rotorgames.com"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="appslovoM.AddReactionPopup"
+                  
+             xmlns:effects="clr-namespace:PlainEntryAndroidSample.Effects">
+
+
+
+
+
+
+    <Frame BackgroundColor="{DynamicResource Key=darkframecolor}" CornerRadius="37" Padding="2" HorizontalOptions="Center" VerticalOptions="Center">
+        <Frame  CornerRadius="35" Padding="30,25,30,25" Margin="0,0,.5,.5">
+            <Frame.Background>
+                <!-- StartPoint defaults to (0,0) -->
+                <LinearGradientBrush EndPoint="1,1">
+                    <GradientStop Color="#161718"
+Offset="0.1" />
+                    <GradientStop Color="#1A1B1D"
+Offset="1.0" />
+                </LinearGradientBrush>
+            </Frame.Background>
+            <StackLayout >
+                <StackLayout Orientation="Horizontal">
+                    <Frame HorizontalOptions="StartAndExpand" Margin="-15,10,10,-1.6" WidthRequest="50" HeightRequest="50" Padding="0" BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="cancel"/>
+                        </Frame.GestureRecognizers>
+
+                        <Frame Padding="17" IsClippedToBounds="True" Margin="0,0,0,0" BackgroundColor="Transparent">
+                            <StackLayout>
+                                <BoxView Color="{DynamicResource Key=blue}" HeightRequest="3" Rotation="-45" Margin="0,-2,0,0"  CornerRadius="1"/>
+                                <BoxView Color="{DynamicResource Key=blue}" HeightRequest="3" Rotation="45" Margin="0,1,0,0" CornerRadius="1"/>
+                            </StackLayout>
+                        </Frame>
+                    </Frame>
+                    <Label x:Name="count" Text="0/10" TextColor="#A9A9A9" FontSize="15" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+
+                <Frame BackgroundColor="{DynamicResource Key=darkframecolor}" Margin="0,10,0,0" Padding="2,2,2,2" CornerRadius="17" WidthRequest="170" HeightRequest="60">
+                    <Frame BackgroundColor="{DynamicResource Key=darkbgcolor}"  HasShadow="False" CornerRadius="15" Padding="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+                        <Entry Margin="1.3,0,0,1"
+                               x:Name="reaction"
+                        FontFamily="Inter"
+                        FontSize="20"
+                        TextColor="#A9A9A9"
+                               Completed="send"
+                           IsSpellCheckEnabled="false"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="true"
+                        PlaceholderColor="#A9A9A9"
+                        BackgroundColor="Transparent"
+                               HorizontalTextAlignment="Center"
+                               MaxLength="10"
+                               TextChanged="countsymbreaction"
+                               Background="{DynamicResource Key=darkbgcolor}">
+
+                            <Entry.Effects>
+                                <effects:PlainEntry/>
+                            </Entry.Effects>
+                        </Entry>
+                    </Frame>
+                </Frame>
+
+
+                <Frame  Margin="0,5,0,0" WidthRequest="170" HorizontalOptions="CenterAndExpand" HasShadow="False" CornerRadius="15" HeightRequest="35" Padding="15,10,15,10" >
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="send"/>
+                    </Frame.GestureRecognizers>
+                    <Frame.Background>
+                        
+                        <!-- StartPoint defaults to (0,0) -->
+                        <LinearGradientBrush EndPoint="1,1">
+                            <GradientStop Color="#6774E3"
+Offset="0.1" />
+                            <GradientStop Color="#9FA6E3"
+Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Frame.Background>
+
+                    <Label Text="React" FontSize="16" FontFamily="Inter" FontAttributes="Bold" TextColor="{DynamicResource Key=darkframecolor}" VerticalOptions="CenterAndExpand" Margin="3,-6,0,-5" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                </Frame>
+            </StackLayout>
+        </Frame>
+
+
+    </Frame>
+
+</pages:PopupPage>

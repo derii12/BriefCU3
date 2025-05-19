@@ -9,13 +9,13 @@
             
             <Style x:Key="entrystyle" TargetType="Entry">
 
-                <Setter Property="TextColor" Value="#3472ED" />
+                <Setter Property="TextColor" Value="{DynamicResource Key=blue}" />
                 <Setter Property="HeightRequest" Value="30" />
-                <Setter Property="PlaceholderColor" Value="#77787A" />
+                <Setter Property="PlaceholderColor" Value="#a9a9a9" />
                 <Setter Property="BackgroundColor" Value="Transparent"/>
             </Style>
             <Style x:Key="appslovo.confirm" TargetType="AbsoluteLayout">
-                <Setter Property="Background"  Value="#131518"/>
+                <Setter Property="Background"  Value="{DynamicResource Key=darkbgcolor}"/>
             </Style>
 
         </ResourceDictionary>
@@ -23,56 +23,94 @@
     <ContentPage.Content>
         <AbsoluteLayout>
             <Label
-                Text="Quody"
-                TextColor="White"
+                Text="Brief"
+                TextColor="#d8d8d8"
                 FontSize="40"
-                AbsoluteLayout.LayoutFlags="All"
-                AbsoluteLayout.LayoutBounds=".5,.06,.26,.06"
-                FontFamily="Inter"/>
+                HorizontalTextAlignment="Center"
+                FontFamily="Inter" 
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds=".5,.03,110,100"/>
+
+
+
+            <Image Source="fourdigits.png" Aspect="AspectFit" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".5,.15,150,150"/>
+
             <Label x:Name="info_label"
                 WidthRequest="1600"
-               TextColor="Wheat"
-               Text="" />
-            <Label x:Name="confirm_input_error"
-                WidthRequest="1600"
-               TextColor="red"
+               TextColor="#D8D8D8"
                Text="" 
-               AbsoluteLayout.LayoutFlags="All"
-               AbsoluteLayout.LayoutBounds=".5,.6,.8,.1"
-               HorizontalTextAlignment="Center"/>
-
-            <Image  x:Name="image2"  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds=".5,.19,.28,.28"/>
+                           HorizontalTextAlignment="Center"
+                           AbsoluteLayout.LayoutFlags="PositionProportional"
+AbsoluteLayout.LayoutBounds=".5,.38,251,70"/>
 
 
-            <Frame AbsoluteLayout.LayoutFlags="PositionProportional"
-                   AbsoluteLayout.LayoutBounds=".5,.5,250,50"
-                   Padding="0,0,0,0"
-                   HasShadow="true"
-                   BackgroundColor="#222528"
-                   CornerRadius="9"
-                  >
+            <Frame HorizontalOptions="EndAndExpand" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".94,.45,50,50" Padding="0" BackgroundColor="Transparent">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="send_user_confirmation"/>
+                </Frame.GestureRecognizers>
 
-                <Entry
+                <Frame Padding="17" IsClippedToBounds="True" Margin="0,5,0,0" BackgroundColor="Transparent">
+                    <StackLayout>
+                        <BoxView Color="{DynamicResource Key=blue}" HeightRequest="3" Rotation="45" Margin="0,-2,0,0"  CornerRadius="1"/>
+                        <BoxView Color="{DynamicResource Key=blue}" HeightRequest="3" Rotation="-45" Margin="0,1,0,0" CornerRadius="1"/>
+                    </StackLayout>
+                </Frame>
+            </Frame>
+
+            <Frame 
+                   HasShadow="False"
+                   Padding="0,5,0,10"
+                   BackgroundColor="{DynamicResource Key=darkframecolor}"
+                   CornerRadius="15"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds=".5,.45,251,66">
+                
+
+                        <Entry
 Style="{StaticResource entrystyle}"
                     CharacterSpacing="1"
-            MaxLength="6"    
+                    HeightRequest="50"
+            MaxLength="4"    
                     FontFamily="Inter"
-                    HorizontalTextAlignment="Center"
-            Placeholder="Sms-code"
-            Margin="0,0,0,0"
+                            x:Name="confirm_entry"
+                    HorizontalTextAlignment="Start"
+            Placeholder="Last 4 digits"
+            Margin="15,0,0,0"
             WidthRequest="170"
             Completed="send_user_confirmation"
             FontSize="20"
             Keyboard="Telephone">
-                    <Entry.Effects>
-                        <effects:PlainEntry/>
-                    </Entry.Effects>
-                </Entry>
+                            <Entry.Effects>
+                                <effects:PlainEntry/>
+                            </Entry.Effects>
+                        </Entry>
+                    </Frame>
+                    <Label x:Name="confirm_input_error"
+    WidthRequest="1600"
+   TextColor="{DynamicResource Key=red}"
+   Text="" 
+   HorizontalTextAlignment="Center" HorizontalOptions="Center"
+                           AbsoluteLayout.LayoutFlags="PositionProportional"
+AbsoluteLayout.LayoutBounds=".5,.32,251,66"/>
+                    
+
+
+                    
+            
+            <Label x:Name="call_attempt" TextColor="#D8D8D8" HorizontalTextAlignment="Center" AbsoluteLayout.LayoutFlags="PositionProportional" 
+ AbsoluteLayout.LayoutBounds=".5,.55,251,70"/>
+
+            <Frame x:Name="attempt_button" BackgroundColor="Transparent" 
+       AbsoluteLayout.LayoutFlags="PositionProportional"
+        AbsoluteLayout.LayoutBounds=".5,.54,251,70">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="attempt_request_call"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Call me!" HorizontalTextAlignment="Center" TextColor="{DynamicResource Key=blue}"/>
             </Frame>
 
-
             <Label x:Name="phone_number_label" Text="" IsVisible="False"/>
+            <Image x:Name="image2"/>
         </AbsoluteLayout>
-        
     </ContentPage.Content>
 </ContentPage>

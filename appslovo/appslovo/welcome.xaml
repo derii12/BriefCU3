@@ -1,0 +1,45 @@
+﻿<pages:PopupPage xmlns:pages="http://rotorgames.com"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="appslovoM.welcome"
+             CloseWhenBackgroundIsClicked="False"
+             BackgroundClickedCommand="{Binding clicked}"
+                 >
+
+
+    <Frame BackgroundColor="{DynamicResource Key=darkframecolor}" CornerRadius="37" Padding="2" Margin="30,0,30,0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="410">
+        <Frame BackgroundColor="{DynamicResource Key=darkbgcolor}" CornerRadius="35" Padding="20,25,20,25" Margin="0,0,.5,.5">
+            <AbsoluteLayout>
+                <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds=".5,.5,1,1">
+                <CarouselView ItemsSource="{Binding contents}" x:Name="welcomeview" IndicatorView="indicator" Loop="False">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout HeightRequest="240" WidthRequest="250">
+                                
+                                    
+                                
+                                <Label Text="{Binding Text}" FontAttributes="Bold"  TextColor="#D8D8D8"  HorizontalOptions="CenterAndExpand" FontSize="22" FontFamily="Inter" HorizontalTextAlignment="Center"/>
+                                <Image Source="{Binding Image}" Aspect="AspectFit" HeightRequest="180" WidthRequest="170" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+                                <Label Text="{Binding Text1}" TextColor="#606060" Margin="0,15,0,0"  HorizontalTextAlignment="Center" FontSize="15" FontFamily="Inter"/>
+                            </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <IndicatorView x:Name="indicator" IndicatorColor="{DynamicResource Key=darkframecolor}" SelectedIndicatorColor="{DynamicResource Key=blue}" Margin="0,0,0,0"/>
+            </StackLayout>
+                <Frame HorizontalOptions="EndAndExpand" Margin="0,0,10,-1.6" WidthRequest="50" HeightRequest="50" Padding="0" BackgroundColor="Transparent" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1.05,.5">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="clicked"/>
+                    </Frame.GestureRecognizers>
+
+                    <Frame Padding="17" IsClippedToBounds="True" Margin="0,5,0,0" BackgroundColor="Transparent">
+                        <StackLayout>
+                            <BoxView Color="{DynamicResource Key=blue}" HeightRequest="3" Rotation="45" Margin="0,-2,0,0"  CornerRadius="1"/>
+                            <BoxView Color="{DynamicResource Key=blue}" HeightRequest="3" Rotation="-45" Margin="0,1,0,0" CornerRadius="1"/>
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+            </AbsoluteLayout>
+        </Frame>
+    </Frame>
+</pages:PopupPage>

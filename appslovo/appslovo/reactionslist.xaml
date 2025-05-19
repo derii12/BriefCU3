@@ -1,0 +1,57 @@
+﻿<pages:PopupPage xmlns:pages="http://rotorgames.com"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="appslovoM.reactionslist"
+              >
+    <Frame BackgroundColor="{DynamicResource Key=darkframecolor}" CornerRadius="37" Padding="2" HorizontalOptions="Center" VerticalOptions="Center">
+        <Frame  CornerRadius="35" Padding="30,25,30,25" Margin="0,0,.5,.5">
+            <Frame.Background>
+                <!-- StartPoint defaults to (0,0) -->
+                <LinearGradientBrush EndPoint="1,1">
+                    <GradientStop Color="#161718"
+Offset="0.1" />
+                    <GradientStop Color="#1A1B1D"
+Offset="1.0" />
+                </LinearGradientBrush>
+            </Frame.Background>
+            <StackLayout Padding="0">
+                <StackLayout HorizontalOptions="CenterAndExpand" WidthRequest="260">
+                    <Frame HorizontalOptions="StartAndExpand" Margin="-15,10,10,-1.6" WidthRequest="50" HeightRequest="50" Padding="0" BackgroundColor="Transparent">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="close"/>
+                    </Frame.GestureRecognizers>
+
+                    <Frame Padding="17" IsClippedToBounds="True" Margin="0,0,0,0" BackgroundColor="Transparent">
+                        <StackLayout>
+                            <BoxView Color="{DynamicResource Key=blue}" HeightRequest="3" Rotation="-45" Margin="0,-2,0,0"  CornerRadius="1"/>
+                            <BoxView Color="{DynamicResource Key=blue}" HeightRequest="3" Rotation="45" Margin="0,1,0,0" CornerRadius="1"/>
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+                </StackLayout>
+                <Frame CornerRadius="20" HorizontalOptions="CenterAndExpand" WidthRequest="260" Padding="8" Margin="0,0,0,15" HasShadow="false" BackgroundColor="{DynamicResource Key=darkframecolor}">
+                    <StackLayout>
+                        <Frame CornerRadius="14" Padding="11,5,13,7" HorizontalOptions="FillAndExpand" HasShadow="False" BackgroundColor="{DynamicResource Key=darkbgcolor}">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Label x:Name="user_n" Text="" FontFamily="inter" TextColor="#a9a9a9" HorizontalOptions="StartAndExpand" FontSize="15"/>
+                                <Image Source="logomin" Aspect="AspectFit" HorizontalOptions="End" Margin="0,2,0,0" WidthRequest="17"/>
+                            </StackLayout>
+                        </Frame>
+                        <Label Padding="11,2,11,10" Text="" x:Name="user_post_txt" FontFamily="inter" TextColor="#d8d8d8" FontSize="18"/>
+                    </StackLayout>
+                </Frame>
+                <Label Text="Reactions:" FontSize="14" TextColor="#a9a9a9" FontFamily="inter"/>
+                <ScrollView>
+                    
+                    <StackLayout x:Name="reactionsview">
+                        <Label x:Name="no_react" IsVisible="false" Text="No one reacted on this post yet." TextColor="#a9a9a9" FontSize="20" FontFamily="Inter" HorizontalTextAlignment="start"/>
+                    </StackLayout>
+                   
+                </ScrollView>
+               
+            </StackLayout>
+
+
+        </Frame>
+    </Frame>
+</pages:PopupPage>

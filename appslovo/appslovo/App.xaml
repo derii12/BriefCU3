@@ -4,5 +4,10 @@
              x:Class="appslovo.App">
     <Application.Resources>
 
+        <Color x:Key="darkbgcolor">#161718</Color>
+        <Color x:Key="darkframecolor">#252728</Color>
+        <Color x:Key="blue">#596AC7</Color>
+            <Color x:Key="red">#ED4A34</Color>
+       
     </Application.Resources>
 </Application>

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Foundation;
+using Plugin.FirebasePushNotification;
 using UIKit;
 
 namespace appslovo.iOS
@@ -23,9 +23,13 @@ namespace appslovo.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            Rg.Plugins.Popup.Popup.Init();
             global::Xamarin.Forms.Forms.Init();
+           
             LoadApplication(new App());
+            FirebasePushNotificationManager.Initialize(options, true);
             return base.FinishedLaunching(app, options);
         }
+
     }
 }

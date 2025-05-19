@@ -1,5 +1,6 @@
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 [assembly: ExportFont("fonts/Inter-Regular.ttf", Alias = "Inter")]

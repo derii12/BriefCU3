@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "381019962175",
+    "project_id": "appslovo-1fe64",
+    "storage_bucket": "appslovo-1fe64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381019962175:android:ba1701c213c56a7b88b18a",
+        "android_client_info": {
+          "package_name": "dg.farist.appslovo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyUCn8sQG4GvDEy8HRwfypQ8LrEifameg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
