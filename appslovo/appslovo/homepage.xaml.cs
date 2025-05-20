@@ -354,7 +354,7 @@ namespace appslovo
         }
 
 
-        async Task<string> LoadFriends(string token) //search
+        async Task<string> LoadFriends(string token) //отображение друзей
         {
             period = DateTime.Now.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
             string res = "";
@@ -382,7 +382,7 @@ namespace appslovo
             return res;
         }
         public static bool good_internet = true;
-        public async void InternetQuality()
+        public async void InternetQuality()//регулярная проверка качества интернета и прерывание запросов на сервер, чтобы не вызвать краш приложения.
         {
             if (activate)
             {
@@ -420,7 +420,7 @@ namespace appslovo
         }
 
 
-        async static public Task<string> LoadFriendsPosts(string token) //search
+        async static public Task<string> LoadFriendsPosts(string token) //подгрузка постов друзей
         {
 
             string res = "";
